@@ -600,10 +600,10 @@ function registerLocationSelect() {
   // Find the location select element
   var locationSelect = document.getElementById("locations");
   // Add the options to the select element
-  for (var province of LOCATIONS.keys()) {
+  for (var province of Object.keys(LOCATIONS)) {
     var option = document.createElement("option");
     option.value = province;
-    option.text = `${province} (${LOCATIONS.get(province).length})`;
+    option.text = `${province} (${LOCATIONS[province].length})`;
     locationSelect.appendChild(option);
   }
 }
