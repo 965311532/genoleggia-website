@@ -612,4 +612,5 @@ function registerLocationSelect() {
 document.addEventListener("DOMContentLoaded", function (event) {
   initializeProvincesSelect();
   registerOffersContactButtons();
+  registerLocationSelect();
 });
