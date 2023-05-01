@@ -627,7 +627,7 @@ function registerLocationSelect() {
       `;
       locationsContainer.appendChild(locationElement);
     }
-  }
+  });
 }
 
 // Wait until page is loaded
