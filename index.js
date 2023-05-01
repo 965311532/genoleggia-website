@@ -600,11 +600,33 @@ function registerLocationSelect() {
   // Find the location select element
   var locationSelect = document.getElementById("locations");
   // Add the options to the select element
-  for (var province of Object.keys(LOCATIONS)) {
+  for (var province of Object.keys(LOCATIONS).sort()) {
     var option = document.createElement("option");
     option.value = province;
     option.text = `${province} (${LOCATIONS[province].length})`;
     locationSelect.appendChild(option);
+  }
+  // Add the change event listener
+  locationSelect.addEventListener("change", (event) => {
+    // Get the selected province
+    const province = event.target.value;
+    // Get all of the locations for that province
+    const locations = LOCATIONS[province];
+    // Find the locations container element
+    const locationsContainer = document.getElementById("locations-container");
+    // Remove all of the existing locations
+    locationsContainer.innerHTML = "";
+    // Add the new locations
+    for (var location of locations) {
+      const locationElement = document.createElement("div");
+      locationElement.classList.add("location");
+      locationElement.innerHTML = `
+        <semibold>${location.name}</semibold><br/>
+        ${location.address}<br/>
+        ${location.tel} · ${location.email}
+      `;
+      locationsContainer.appendChild(locationElement);
+    }
   }
 }
 
