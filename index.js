@@ -1,4 +1,5 @@
 const PROVINCES = [
+  { value: "", label: "Seleziona una provincia..." },
   { value: "AG", label: "AGRIGENTO" },
   { value: "AL", label: "ALESSANDRIA" },
   { value: "AN", label: "ANCONA" },
