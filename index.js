@@ -617,13 +617,21 @@ function registerLocationSelect() {
     // Remove all of the existing locations
     locationsContainer.innerHTML = "";
     // Add the new locations
-    for (var location of locations) {
+    for (var i = 0; i < locations.length; i++) {
+      var location = locations[i];
       const locationElement = document.createElement("div");
-      locationElement.classList.add("location");
+      // Set styles
+      locationElement.style.marginBottom = "1rem";
+      locationElement.style.borderBottom = "1px solid #ccc"
+        ? i < locations.length - 1
+        : "none";
+      // Set inner HTML
       locationElement.innerHTML = `
-        <semibold>${location.name}</semibold><br/>
+        <span style="font-weight: semibold">${location.name}</span><br/>
         ${location.address}<br/>
-        ${location.tel} · ${location.email}
+        ${location.tel || ""} ${location.tel && location.email && " · "} ${
+        location.email || ""
+      }
       `;
       locationsContainer.appendChild(locationElement);
     }
