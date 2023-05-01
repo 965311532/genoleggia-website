@@ -636,6 +636,8 @@ function registerLocationSelect() {
       locationsContainer.appendChild(locationElement);
     }
   });
+  // Select "Liguria"
+  locationSelect.value = "Liguria";
 }
 
 // Wait until page is loaded
