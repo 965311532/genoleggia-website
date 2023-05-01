@@ -624,16 +624,16 @@ function registerLocationSelect() {
       locationElement.style.marginBottom = "1rem";
       locationElement.style.paddingBottom = "0.5rem";
       locationElement.style.borderBottom =
-        i < locations.length - 1 ? "1px solid black" : "none";
+        i < locations.length - 1 ? "1px solid #aaa" : "none";
       // Set inner HTML
       locationElement.innerHTML = `
         <span style="font-weight: 600; font-size:1.1em;">
           ${location.name}
         </span><br/>
         ${location.address}<br/>
-        ${location?.tel || ""}
-        ${location?.tel && location?.email && " · "} 
-        ${location?.email || ""}
+        ${location.tel || ""}
+        ${location.tel && location.email && " · " || ""} 
+        ${location.email || ""}
       `;
       locationsContainer.appendChild(locationElement);
     }
