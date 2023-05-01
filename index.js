@@ -632,7 +632,7 @@ function registerLocationSelect() {
         </span><br/>
         ${location.address}<br/>
         ${location.tel || ""}
-        ${location.tel && location.email && " · " || ""} 
+        ${(location.tel && location.email && " · ") || ""} 
         ${location.email || ""}
       `;
       locationsContainer.appendChild(locationElement);
@@ -640,6 +640,8 @@ function registerLocationSelect() {
   });
   // Select "Liguria"
   locationSelect.value = "Liguria";
+  // Trigger the change event
+  locationSelect.dispatchEvent(new Event("change"));
 }
 
 // Wait until page is loaded
