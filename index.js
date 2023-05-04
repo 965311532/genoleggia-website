@@ -362,7 +362,7 @@ const LOCATIONS = {
   Toscana: [
     {
       name: "CENTRO SERVIZI ASSICURATIVI SpA",
-      address: "Via dell’Artigianato 39/A 57121 Livorno (LI)",
+      address: "Via dell'Artigianato 39/A 57121 Livorno (LI)",
       tel: "+390586429676",
       email: "csa@genoleggia.it",
     },
@@ -424,6 +424,12 @@ const LOCATIONS = {
       name: "CENTRO SERVIZI ASSICURATIVI SpA",
       address: "Via Jacopo Carrucci 214 50053 Empoli (FI)",
       tel: "+39057177104",
+      email: "csa@genoleggia.it",
+    },
+    {
+      name: "CENTRO SERVIZI ASSICURATIVI SpA",
+      address: "Via Vanni 38 56038 Ponsacco (PI)",
+      tel: "0587734240",
       email: "csa@genoleggia.it",
     },
     {
