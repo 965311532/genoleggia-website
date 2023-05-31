@@ -3,6 +3,9 @@
 // If we need to access data in the current repo, we can use this
 const BASE_URL = "https://965311532.github.io/genoleggia.it";
 
+// Start the script
+start();
+
 // Don't wait for the DOM to be ready, start loading data immediately
 function start() {
   const currentPath = window.location.pathname;
@@ -27,17 +30,23 @@ function getElementById(id) {
 function loadHomePageOffers() {
   // Fetch offers
   fetch(
-    "https://cdn.jsdelivr.net/gh/965311532/genoleggia.it@349b50f62d36edacea720cf7fbfdd52e7e8fb69f/assets/offers.json"
+    "https://cdn.jsdelivr.net/gh/965311532/genoleggia.it@4e65a064a4b46471bf81396174245875e0b26508/assets/offers.json"
   ).then((res) =>
     res.json().then((data) => {
       console.debug("Offers: " + data);
-      // Get the container element
+      // Get the hero container element
       const target = getElementById("hero-offers");
-      // Clear the container
       target.innerHTML = "";
       // Add the offers (first 3)
       for (let i = 0; i < 3; i++) {
         target.innerHTML += HeroCarOffer(data[i]);
+      }
+      // Get the other offers container element
+      const target2 = getElementById("offers");
+      target2.innerHTML = "";
+      // Add the offers (last 6)
+      for (let i = 3; i < 9; i++) {
+        target2.innerHTML += CarOffer(data[i]);
       }
     })
   );
@@ -55,6 +64,20 @@ function HeroCarOffer(props) {
     <div class="car-price-details">${props.details}</div>
     <div class="car-offer-btn">
       <a href="#" class="button w-button">Richiedi informazioni</a>
+    </div>
+  </div>`;
+}
+
+function CarOffer(props) {
+  return `
+  <div class="car-offer">
+    <div class="car-offer-image">
+      <img src=${props.image} alt="" class="image-3">
+    </div>
+    <h3 class="car-offer-price smaller red">${props.name}</h3>
+    <div class="car-price-details black">${props.details}</div>
+    <div class="car-offer-btn">
+      <a href="#" class="button red w-button">Richiedi informazioni</a>
     </div>
   </div>`;
 }
