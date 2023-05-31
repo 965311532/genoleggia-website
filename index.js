@@ -27,7 +27,7 @@ function getElementById(id) {
 function loadHomePageOffers() {
   // Fetch offers
   fetch(
-    "https://cdn.jsdelivr.net/gh/965311532/genoleggia.it@dev/assets/offers.json"
+    "https://cdn.jsdelivr.net/gh/965311532/genoleggia.it@349b50f62d36edacea720cf7fbfdd52e7e8fb69f/assets/offers.json"
   ).then((res) =>
     res.json().then((data) => {
       console.debug("Offers: " + data);
