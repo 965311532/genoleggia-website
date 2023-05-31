@@ -1,0 +1,65 @@
+[
+    {
+        "price": 224,
+        "name": "Suzuki Vitara",
+        "details": "Anticipo €3.500 · 48 mesi · 10.000 km/anno",
+        "image": "https://cdn-08.imagin.studio/getImage?&customer=itgenoleggia-spa&make=suzuki&modelFamily=vitara&modelRange=vitara&modelVariant=od&modelYear=2018&powerTrain=fossil&transmission=0&bodySize=5&trim=0&paintId=imagin-grey&angle=28",
+        "slug": "suzuki-vitara"
+    },
+    {
+        "price": 360,
+        "name": "Volkswagen Polo",
+        "details": "Anticipo €0 · 48 mesi · 25.000 km/anno",
+        "image": "https://cdn-08.imagin.studio/getImage?&customer=itgenoleggia-spa&make=volkswagen&modelFamily=polo&modelRange=polo&modelVariant=ch&modelYear=2020&powerTrain=fossil&transmission=0&bodySize=5&trim=0&paintId=pspc0064&angle=28",
+        "slug": "volkswagen-polo"
+    },
+    {
+        "price": 692,
+        "name": "Volvo XC60",
+        "details": "Anticipo €5.000 · 48 mesi · 20.000 km/anno",
+        "image": "https://cdn-09.imagin.studio/getImage?&customer=itgenoleggia-spa&make=volvo&modelFamily=xc60&modelRange=xc60&modelVariant=od&modelYear=2022&powerTrain=fossil&transmission=0&bodySize=5&trim=0&paintId=pspc0187&angle=28",
+        "slug": "volvo-xc60"
+    },
+    {
+        "price": 292,
+        "name": "Renault Clio",
+        "details": "Anticipo €0 · 48 mesi · 10.000 km/anno",
+        "image": "https://cdn-08.imagin.studio/getImage?&customer=itgenoleggia-spa&make=renault&modelFamily=clio&modelRange=clio&modelVariant=ch&modelYear=2019&powerTrain=fossil&transmission=0&bodySize=5&trim=0&paintId=imagin-grey&angle=28",
+        "slug": "renault-clio"
+    },
+    {
+        "price": 326,
+        "name": "Opel Corsa",
+        "details": "Anticipo €0 · 48 mesi · 15.000 km/anno",
+        "image": "https://cdn-08.imagin.studio/getImage?&customer=itgenoleggia-spa&make=opel&modelFamily=corsa&modelRange=corsa&modelVariant=ch&modelYear=2018&powerTrain=fossil&transmission=0&bodySize=3&trim=0&paintId=pspc0185&angle=28",
+        "slug": "opel-corsa"
+    },
+    {
+        "price": 271,
+        "name": "Lancia Ypsilon",
+        "details": "Anticipo €0 · 48 mesi · 10.000 km/anno",
+        "image": "https://cdn-08.imagin.studio/getImage?&customer=itgenoleggia-spa&make=lancia&modelFamily=ypsilon&modelRange=ypsilon&modelVariant=ha&modelYear=2018&powerTrain=fossil&transmission=0&bodySize=5&trim=0&paintId=imagin-grey&angle=28",
+        "slug": "lancia-ypsilon"
+    },
+    {
+        "price": 272,
+        "name": "Fiat 500C",
+        "details": "Anticipo €2.000 · 48 mesi · 15.000 km/anno",
+        "image": "https://cdn-08.imagin.studio/getImage?&customer=itgenoleggia-spa&make=fiat&modelFamily=500c&modelRange=124-spider&modelVariant=ca&modelYear=2018&powerTrain=fossil&transmission=0&bodySize=2&trim=0&paintId=pspc0064sspc0254&angle=28",
+        "slug": "fiat-500c"
+    },
+    {
+        "price": 803,
+        "name": "BMW X4",
+        "details": "Anticipo €0 · 25 mesi · 10.000 km/anno",
+        "image": "https://cdn-09.imagin.studio/getImage?&customer=itgenoleggia-spa&make=bmw&modelFamily=x4&modelRange=x4&modelVariant=od&modelYear=2022&powerTrain=fossil&transmission=0&bodySize=5&trim=0&paintId=pspc0064&angle=28",
+        "slug": "bmw-x4"
+    },
+    {
+        "price": 277,
+        "name": "Citroen C3",
+        "details": "Anticipo €2.500 · 48 mesi · 20.000 km/anno",
+        "image": "https://cdn-08.imagin.studio/getImage?&customer=itgenoleggia-spa&make=citroen&modelFamily=c3&modelRange=c3&modelVariant=ch&modelYear=2019&powerTrain=fossil&transmission=0&bodySize=5&trim=0&paintId=pspc0015&angle=28",
+        "slug": "citroen-c3"
+    }
+]
