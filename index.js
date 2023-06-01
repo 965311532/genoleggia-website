@@ -19,7 +19,7 @@ function start() {
       loadOffersDetails();
       break;
     case "locations":
-      loadLocations();
+      loadLocationsPage();
       break;
     default:
       break;
@@ -27,18 +27,22 @@ function start() {
 }
 
 // getElementById but wait until the DOM is ready
-function getElementById(id) {
-  while (true) {
-    if (document.readyState !== "loading") {
-      return document.getElementById(id);
+async function getElementById(id) {
+  return new Promise((resolve, reject) => {
+    function checkReady() {
+      if (document.readyState !== "loading") {
+        let element = document.getElementById(id);
+        if (element) {
+          resolve(element);
+        } else {
+          reject(new Error(`Element with id "${id}" not found.`));
+        }
+      } else {
+        setTimeout(checkReady, 100);
+      }
     }
-    sleep(25); // Pause for a small amount of time
-  }
-}
-
-// Function to sleep for a given amount of time
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+    checkReady();
+  });
 }
 
 // Helper function to get the offers
@@ -61,16 +65,16 @@ async function getOffers() {
 // Function to load the offers on the home page
 function loadHomePageOffers() {
   // Fetch offers
-  getOffers().then((data) => {
+  getOffers().then(async (data) => {
     // Get the hero container element
-    const target = getElementById("hero-offers");
+    const target = await getElementById("hero-offers");
     target.innerHTML = "";
     // Add the offers (first 3)
     for (let i = 0; i < 3; i++) {
       target.innerHTML += HeroCarOffer(data[i]);
     }
     // Get the other offers container element
-    const target2 = getElementById("offers");
+    const target2 = await getElementById("offers");
     target2.innerHTML = "";
     // Add the offers (last 6)
     for (let i = 3; i < 9; i++) {
@@ -114,7 +118,7 @@ function CarOffer(props) {
 // Function to load the offer on the offer details page
 function loadOffersDetails() {
   // Fetch offers
-  getOffers().then((data) => {
+  getOffers().then(async (data) => {
     // Get the query string
     const queryString = window.location.search;
     console.debug("Query string: " + queryString);
@@ -127,7 +131,7 @@ function loadOffersDetails() {
     const car = data.find((car) => car.slug === carSlug);
     console.debug("Car: " + car);
     // Get the target element
-    const target = getElementById("offer-details");
+    const target = await getElementById("offer-details");
     target.innerHTML = "";
     // Add the offer
     target.innerHTML += OfferDetails(car);
@@ -161,9 +165,9 @@ async function getRegions() {
 }
 
 // Function to fix the location form
-function fixLocationForm() {
+async function fixLocationForm() {
   // Get the `locations` select element
-  const locationsSelect = getElementById("locations");
+  const locationsSelect = await getElementById("locations");
   getRegions().then((regions) => {
     // Add the regions to the select element
     locationsSelect.innerHTML = "";
@@ -172,7 +176,7 @@ function fixLocationForm() {
     });
   });
   // When the `location-form` is submitted we want to intercept the event and redirect the user to the correct location page
-  const locationForm = getElementById("location-form");
+  const locationForm = await getElementById("location-form");
   locationForm.addEventListener("submit", (event) => {
     // Prevent the default form submission
     event.preventDefault();
@@ -192,7 +196,7 @@ async function getLocations() {
 }
 
 // Function to load the locations page
-function loadLocationsPage() {
+async function loadLocationsPage() {
   // Get the query string
   const queryString = window.location.search;
   console.debug("Query string: " + queryString);
@@ -202,9 +206,9 @@ function loadLocationsPage() {
   const region = urlParams.get("region");
   console.debug("Region: " + region);
   // Get the title, image and blocks container elements
-  const title = getElementById("location-title");
-  const image = getElementById("location-image");
-  const blocks = getElementById("location-blocks");
+  const title = await getElementById("location-title");
+  const image = await getElementById("location-image");
+  const blocks = await getElementById("location-blocks");
   // Set the title
   title.innerHTML = region;
   // Set the image
