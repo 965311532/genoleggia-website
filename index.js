@@ -164,15 +164,24 @@ async function getRegions() {
   ).then((res) => res.json());
 }
 
+// Function to load the locations
+async function getLocations() {
+  console.debug("Fetching locations...");
+  return fetch(
+    "https://cdn.jsdelivr.net/gh/965311532/genoleggia.it@4bd6c6bed1aa46a7ea02b6647bb0982a496e8707/assets/locations.json"
+  ).then((res) => res.json());
+}
+
 // Function to fix the location form
 async function fixLocationForm() {
   // Get the `locations` select element
   const locationsSelect = await getElementById("locations");
-  getRegions().then((regions) => {
-    // Add the regions to the select element
+  getLocations().then((locations) => {
+    // Add the regions to the select element (the keys are the region names)
     locationsSelect.innerHTML = "";
+    const regions = Object.keys(locations).sort();
     regions.forEach((region) => {
-      locationsSelect.innerHTML += `<option value="${region.name}">${region.name}</option>`;
+      locationsSelect.innerHTML += `<option value="${region}">${region}</option>`;
     });
   });
   // When the `location-form` is submitted we want to intercept the event and redirect the user to the correct location page
@@ -185,14 +194,6 @@ async function fixLocationForm() {
     // Redirect the user to the correct location page
     window.location.href = `/locations?region=${selectedRegion}`;
   });
-}
-
-// Function to load the locations
-async function getLocations() {
-  console.debug("Fetching locations...");
-  return fetch(
-    "https://cdn.jsdelivr.net/gh/965311532/genoleggia.it@4bd6c6bed1aa46a7ea02b6647bb0982a496e8707/assets/locations.json"
-  ).then((res) => res.json());
 }
 
 // Function to load the locations page
