@@ -18,7 +18,7 @@ function start() {
     case "/offers":
       loadOffersDetails();
       break;
-    case "locations":
+    case "/locations":
       loadLocationsPage();
       break;
     default:
@@ -160,7 +160,7 @@ function OfferDetails(props) {
 async function getRegions() {
   console.debug("Fetching regions...");
   return fetch(
-    "https://cdn.jsdelivr.net/gh/965311532/genoleggia.it@4bd6c6bed1aa46a7ea02b6647bb0982a496e8707/assets/regions.json"
+    "https://cdn.jsdelivr.net/gh/965311532/genoleggia.it@6c874adb0d3f2079a6461252de55eb0cd060d893/assets/regions.json"
   ).then((res) => res.json());
 }
 
