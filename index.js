@@ -13,8 +13,10 @@ function start() {
   switch (currentPath) {
     case "/":
       loadHomePageOffers();
+      break;
     case "/offers":
       loadOffersDetails();
+      break;
     default:
       break;
   }
