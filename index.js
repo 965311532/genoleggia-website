@@ -15,6 +15,8 @@ function start() {
       loadHomePageOffers();
     case "/offers":
       loadOffersDetails();
+    default:
+      break;
   }
 }
 
@@ -30,16 +32,24 @@ function getElementById(id) {
 
 async function getOffers() {
   // Return the offers store in the assets folder
+  console.debug("Fetching offers...");
   return fetch(
     "https://cdn.jsdelivr.net/gh/965311532/genoleggia.it@4e65a064a4b46471bf81396174245875e0b26508/assets/offers.json"
-  ).then((res) => res.json());
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      console.debug("Offers fetched: " + data);
+      return data;
+    })
+    .catch((err) => {
+      console.error("Error fetching offers: " + err);
+    });
 }
 
 // Function to load the offers on the home page
 function loadHomePageOffers() {
   // Fetch offers
   getOffers().then((data) => {
-    console.debug("Offers: " + data);
     // Get the hero container element
     const target = getElementById("hero-offers");
     target.innerHTML = "";
@@ -91,7 +101,6 @@ function CarOffer(props) {
 function loadOffersDetails() {
   // Fetch offers
   getOffers().then((data) => {
-    console.debug("Offers: " + data);
     // Get the query string
     const queryString = window.location.search;
     console.debug("Query string: " + queryString);
@@ -113,12 +122,14 @@ function loadOffersDetails() {
 
 function OfferDetails(props) {
   return `
+  <div class="car-details-image-wrapper">
     <img src=${props.image} alt="" class="car-details-image">
-    <div class="car-details-info">
-      <h3 class="title red bigger">${props.name}</h3>
-      <div class="subtitle">${props.details}</div>
-      <h1 class="title red bold">${parseFloat(props.price).toFixed(0)},00€</h1>
-      <div class="car-details-button">
+  </div>
+  <div class="car-details-info">
+    <h3 class="title red bigger">${props.name}</h3>
+    <div class="subtitle">${props.details}</div>
+    <h1 class="title red bold">${parseFloat(props.price).toFixed(0)},00€</h1>
+    <div class="car-details-button">
       <a href="#contact-us-form" class="button-hero red w-button">Richiedi preventivo</a>
     </div>
   </div>`;
