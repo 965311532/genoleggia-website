@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Liguria",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac1b2a3f3f4ad82e466_liguria.svg"
+    },
+    {
+        "name": "Piemonte",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac17dee3ec1f34f741d_piemonte.svg"
+    },
+    {
+        "name": "Lombardia",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac11b486269d23c7b00_lombardia.svg"
+    },
+    {
+        "name": "Trentino Alto Adige",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac261b55d8e5dc0031c_trentino.svg"
+    },
+    {
+        "name": "Veneto",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac361b55d8e5dc003af_veneto.svg"
+    },
+    {
+        "name": "Friuli Venezia Giulia",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac1f9e9623fc7ecbb2a_friuli.svg"
+    },
+    {
+        "name": "Emilia Romagna",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac488967bb652d1fa43_emiliaromagna.svg"
+    },
+    {
+        "name": "Toscana",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac2f98d10a1ecedefb8_toscana.svg"
+    },
+    {
+        "name": "Calabria",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac45d5ced089ed744ab_calabria.svg"
+    },
+    {
+        "name": "Basilicata",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac4ba0200437e0e998d_basilicata.svg"
+    },
+    {
+        "name": "Campania",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac4500541352839cf6a_campania.svg"
+    },
+    {
+        "name": "Abruzzo",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac336d69fc0459786a7_abruzzo.svg"
+    },
+    {
+        "name": "Valle d'Aosta",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac352b342e0f08384af_valleaosta.svg"
+    },
+    {
+        "name": "Umbria",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac3b2a3f3f4ad82e628_umbria.svg"
+    },
+    {
+        "name": "Sicilia",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac2b2a3f3f4ad82e556_sicilia.svg"
+    },
+    {
+        "name": "Sardegna",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac2211da6c406502f67_sardegna.svg"
+    },
+    {
+        "name": "Puglia",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac2211da6c406502f67_sardegna.svg"
+    },
+    {
+        "name": "Marche",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac1f91deaf21e3dea04_marche.svg"
+    },
+    {
+        "name": "Molise",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac1f91deaf21e3dea04_marche.svg"
+    },
+    {
+        "name": "Lazio",
+        "image": "https://uploads-ssl.webflow.com/6334503ebef8d36e1d4f5c9a/6478aac1b988ecf9eeee5e33_lazio.svg"
+    }
+]
