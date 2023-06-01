@@ -160,7 +160,7 @@ function OfferDetails(props) {
 async function getRegions() {
   console.debug("Fetching regions...");
   return fetch(
-    "https://cdn.jsdelivr.net/gh/965311532/genoleggia.it@6c874adb0d3f2079a6461252de55eb0cd060d893/assets/regions.json"
+    "https://cdn.jsdelivr.net/gh/965311532/genoleggia.it@1054d4b7b0c7d5ce845002ff749c988740b9925f/assets/regions.json"
   ).then((res) => res.json());
 }
 
