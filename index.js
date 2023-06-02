@@ -181,13 +181,13 @@ async function fixLocationForm() {
     locationsSelect.innerHTML = "";
     const regions = Object.keys(locations).sort();
     regions.forEach((region) => {
-      locationsSelect.innerHTML += `<option value="${region}">${region}</option>`;
+      locationsSelect.innerHTML += `<option value="${region}">${region} (${locations[region].length})</option>`;
     });
   });
-  // When the `location-form` is submitted we want to intercept the event and redirect the user to the correct location page
-  const locationForm = await getElementById("location-form");
-  locationForm.addEventListener("submit", (event) => {
-    // Prevent the default form submission
+  // When the `location-form-btn` is clicked we want to intercept the event and redirect the user to the correct location page
+  const locationBtn = await getElementById("location-form-btn");
+  locationBtn.addEventListener("click", (event) => {
+    // Prevent the default behaviour
     event.preventDefault();
     // Get the selected region
     const selectedRegion = locationsSelect.value;
