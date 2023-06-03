@@ -235,9 +235,9 @@ function LocationBlock(props, last) {
   return `
 <div class="location-block">
   <div class="location-info">
-    <strong>${props.name}<br></strong>${props.address}<br>${props?.tel}${
+    <strong>${props.name}<br></strong>${props.address}<br>${props?.tel || ""}${
     props?.tel && props?.email ? " • " : ""
-  }${props?.email}
+  }${props?.email || ""}
   </div>
   <a href="${
     props?.email ? `mailto:${props.email}` : `tel:${props.tel}`
