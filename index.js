@@ -50,7 +50,7 @@ async function getOffers() {
   // Return the offers store in the assets folder
   console.debug("Fetching offers...");
   return fetch(
-    "https://cdn.jsdelivr.net/gh/965311532/genoleggia.it@4e65a064a4b46471bf81396174245875e0b26508/assets/offers.json"
+    "https://cdn.jsdelivr.net/gh/965311532/genoleggia.it@c0fbbd6a93ba428b8d976e9e043677fd0cef1a9e/assets/offers.json"
   )
     .then((res) => res.json())
     .then((data) => {
