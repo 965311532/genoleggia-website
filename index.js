@@ -50,7 +50,7 @@ async function getOffers() {
   // Return the offers store in the assets folder
   console.debug("Fetching offers...");
   return fetch(
-    "https://cdn.jsdelivr.net/gh/965311532/genoleggia.it@c0fbbd6a93ba428b8d976e9e043677fd0cef1a9e/assets/offers.json"
+    "https://cdn.jsdelivr.net/gh/965311532/genoleggia.it@bfc96845b1ba38c32b2b0677af1c34c4454522cf/assets/offers.json"
   )
     .then((res) => res.json())
     .then((data) => {
@@ -93,9 +93,7 @@ function HeroCarOffer(props) {
       <img src=${props.image} alt="" class="image-3">
     </div>
     <h3 class="car-offer-price smaller">${props.name}</h3>
-    <div class="car-price-details">
-      ${props.details.replace(/\n/g, "<br/>")}
-    </div>
+    <div class="car-price-details">${props.details}</div>
     <div class="car-offer-btn">
       <a href="#contact-us-form" class="button w-button">Richiedi informazioni</a>
     </div>
