@@ -66,14 +66,7 @@ async function getOffers() {
 function loadHomePageOffers() {
   // Fetch offers
   getOffers().then(async (data) => {
-    // Get the hero container element
-    const target = await getElementById("hero-offers");
-    target.innerHTML = "";
-    // Add the offers (first 3)
-    for (let i = 0; i < 3; i++) {
-      target.innerHTML += HeroCarOffer(data[i]);
-    }
-    // Get the other offers container element
+    // Get the offers container element
     const target2 = await getElementById("offers");
     target2.innerHTML = "";
     // Add the offers (last 6)
@@ -81,23 +74,6 @@ function loadHomePageOffers() {
       target2.innerHTML += CarOffer(data[i]);
     }
   });
-}
-
-// Car offer string template for the hero section
-function HeroCarOffer(props) {
-  return `
-  <div class="car-offer">
-    <h3 class="car-offer-price">€${parseInt(props.price).toFixed(0)},00€</h3>
-    <div class="car-price-details">MESE I.E.</div>
-    <div class="car-offer-image">
-      <img src=${props.image} alt="" class="image-3">
-    </div>
-    <h3 class="car-offer-price smaller">${props.name}</h3>
-    <div class="car-price-details">${props.details}</div>
-    <div class="car-offer-btn">
-      <a href="#contact-us-form" class="button w-button">Richiedi informazioni</a>
-    </div>
-  </div>`;
 }
 
 // Car offer string template for the other offers section
