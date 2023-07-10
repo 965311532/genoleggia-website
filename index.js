@@ -16,7 +16,7 @@ function start() {
       fixLocationForm();
       break;
     case "/offers":
-      loadOffersDetails();
+      loadOffers();
       break;
     case "/locations":
       loadLocationsPage();
@@ -24,6 +24,14 @@ function start() {
     default:
       break;
   }
+}
+
+// Helper function to format numbers in italian format
+function formatNumber(number, digits = 0) {
+  return number.toLocaleString("it-IT", {
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
+  });
 }
 
 // getElementById but wait until the DOM is ready
@@ -46,12 +54,11 @@ async function getElementById(id) {
 }
 
 // Helper function to get the offers
-async function getOffers() {
-  // Return the offers store in the assets folder
+async function getOffers({ offerId, page = 1, perPage = 20 }) {
+  // Return the offers from the API
   console.debug("Fetching offers...");
-  return fetch(
-    "https://cdn.jsdelivr.net/gh/965311532/genoleggia.it@bfc96845b1ba38c32b2b0677af1c34c4454522cf/assets/offers.json"
-  )
+  const params = `?page=${page}&per_page=${perPage}/${offerId || ""}`;
+  return fetch(`https://api.genoleggia.com/offers/public${params}`)
     .then((res) => res.json())
     .then((data) => {
       console.debug("Offers fetched: " + data);
@@ -65,12 +72,12 @@ async function getOffers() {
 // Function to load the offers on the home page
 function loadHomePageOffers() {
   // Fetch offers
-  getOffers().then(async (data) => {
+  getOffers({ perPage: 6 }).then(async (data) => {
     // Get the offers container element
     const target2 = await getElementById("offers");
     target2.innerHTML = "";
-    // Add the offers (last 6)
-    for (let i = 3; i < 9; i++) {
+    // Add the offers
+    for (let i = 0; i < data.length; i++) {
       target2.innerHTML += CarOffer(data[i]);
     }
   });
@@ -81,36 +88,46 @@ function CarOffer(props) {
   return `
   <div class="car-offer">
     <div class="car-offer-image">
-      <img src=${props.image} alt="" class="image-3">
+      <img src=${props.vehicle.model.image} alt="" class="image-3">
     </div>
-    <h3 class="car-offer-price smaller red">${props.name}</h3>
-    <div class="car-price-details black">${props.details}</div>
+    <h3 class="car-offer-price smaller red">${props.brand.name} ${
+    props.model.name
+  }</h3>
+    <div class="car-price-details black">
+      ${props.duration} mesi · ${formatNumber(props.distance)} km/anno
+      <br/>
+      Anticipo €${formatNumber(props.deposit)} + IVA
+    </div>
     <div class="car-offer-btn">
-      <a href="/offers?car=${props.slug}" class="button red w-button">Scopri di più</a>
+      <a href="/offers?offerId=${props.id}" class="button red w-button">
+        Scopri di più
+      </a>
     </div>
   </div>`;
 }
 
 // Function to load the offer on the offer details page
-function loadOffersDetails() {
+function loadOffers() {
+  // Get the query string
+  const queryString = window.location.search;
+  // Get the query params
+  const urlParams = new URLSearchParams(queryString);
+  // If there is a "offerId" param, load the specific offer, otherwise load all offers
+  if (urlParams.has("offerId")) {
+    loadOfferDetails({ offerId: urlParams.get("offerId") });
+  } else {
+    loadAllOffers();
+  }
+}
+
+function loadOfferDetails({ offerId }) {
   // Fetch offers
-  getOffers().then(async (data) => {
-    // Get the query string
-    const queryString = window.location.search;
-    console.debug("Query string: " + queryString);
-    // Get the query params
-    const urlParams = new URLSearchParams(queryString);
-    // Get the car slug
-    const carSlug = urlParams.get("car");
-    console.debug("Car slug: " + carSlug);
-    // Get the car
-    const car = data.find((car) => car.slug === carSlug);
-    console.debug("Car: " + car);
+  getOffers({ offerId }).then(async (data) => {
     // Get the target element
     const target = await getElementById("offer-details");
     target.innerHTML = "";
     // Add the offer
-    target.innerHTML += OfferDetails(car);
+    target.innerHTML += OfferDetails(data);
   });
 }
 
@@ -118,11 +135,15 @@ function loadOffersDetails() {
 function OfferDetails(props) {
   return `
   <div class="car-details-image-wrapper">
-    <img src=${props.image} alt="" class="car-details-image">
+    <img src=${props.vehicle.model.image} alt="" class="car-details-image">
   </div>
   <div class="car-details-info">
-    <h3 class="title red bigger">${props.name}</h3>
-    <div class="subtitle">${props.details}</div>
+    <h3 class="title red bigger">${props.brand.name} ${props.model.name}</h3>
+    <div class="subtitle">
+      ${props.duration} mesi · ${formatNumber(props.distance)} km/anno
+      <br/>
+      Anticipo €${formatNumber(props.deposit)} + IVA
+    </div>
     <h1 class="title red bold">${parseFloat(props.price).toFixed(0)},00€ 
       <span class="text-span">mese i.e.</span>
     </h1>
