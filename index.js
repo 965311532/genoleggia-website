@@ -78,8 +78,8 @@ function loadHomePageOffers() {
     const target2 = await getElementById("offers");
     target2.innerHTML = "";
     // Add the offers
-    for (let i = 0; i < data.length; i++) {
-      target2.innerHTML += CarOffer(data[i]);
+    for (let i = 0; i < data.items.length; i++) {
+      target2.innerHTML += CarOffer(data.items[i]);
     }
   });
 }
@@ -91,8 +91,8 @@ function CarOffer(props) {
     <div class="car-offer-image">
       <img src=${props.vehicle.model.image} alt="" class="image-3">
     </div>
-    <h3 class="car-offer-price smaller red">${props.brand.name} ${
-    props.model.name
+    <h3 class="car-offer-price smaller red">${props.vehicle.brand.name} ${
+    props.vehicle.model.name
   }</h3>
     <div class="car-price-details black">
       ${props.duration} mesi · ${formatNumber(props.distance)} km/anno
@@ -139,7 +139,9 @@ function OfferDetails(props) {
     <img src=${props.vehicle.model.image} alt="" class="car-details-image">
   </div>
   <div class="car-details-info">
-    <h3 class="title red bigger">${props.brand.name} ${props.model.name}</h3>
+    <h3 class="title red bigger">${props.vehicle.brand.name} ${
+    props.vehicle.model.name
+  }</h3>
     <div class="subtitle">
       ${props.duration} mesi · ${formatNumber(props.distance)} km/anno
       <br/>
