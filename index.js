@@ -115,7 +115,10 @@ function loadOffers({ page, perPage }) {
   getOffers({ page, perPage }).then(async (data) => {
     // Get the offers container element
     const target = await getElementById("offers");
-    target.innerHTML = "";
+    // Remove the placeholder if it's the first page
+    if (page === 1) {
+      target.innerHTML = "";
+    }
     // Add the offers
     for (let i = 0; i < data.items.length; i++) {
       target.innerHTML += CarOffer(data.items[i]);
@@ -127,9 +130,10 @@ function loadOffers({ page, perPage }) {
     });
     // Update the subtitle
     const subtitle = await getElementById("offers-subtitle");
-    subtitle.innerHTML = `Mostrando ${data.per_page * page} di ${
+    subtitle.innerHTML = `${data.per_page * page} di ${
       data.per_page * data.pages
     } offerte`;
+    subtitle.classList.remove("hidden");
   });
 }
 
