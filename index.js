@@ -15,6 +15,9 @@ function start() {
       loadHomePageOffers();
       fixLocationForm();
       break;
+    case "/offer":
+      loadOfferDetails();
+      break;
     case "/offers":
       loadOffers();
       break;
@@ -107,23 +110,26 @@ function CarOffer(props) {
   </div>`;
 }
 
-// Function to load the offer on the offer details page
 function loadOffers() {
+  // Fetch offers
+  getOffers({ perPage: 20 }).then(async (data) => {
+    // Get the offers container element
+    const target = await getElementById("offers");
+    target.innerHTML = "";
+    // Add the offers
+    for (let i = 0; i < data.items.length; i++) {
+      target.innerHTML += CarOffer(data.items[i]);
+    }
+  });
+}
+
+function loadOfferDetails() {
   // Get the query string
   const queryString = window.location.search;
   // Get the query params
   const urlParams = new URLSearchParams(queryString);
-  // If there is a "offerId" param, load the specific offer, otherwise load all offers
-  if (urlParams.has("offerId")) {
-    loadOfferDetails({ offerId: urlParams.get("offerId") });
-  } else {
-    loadAllOffers();
-  }
-}
-
-function loadOfferDetails({ offerId }) {
   // Fetch offers
-  getOffers({ offerId }).then(async (data) => {
+  getOffers({ offerId: urlParams.get("offerId") }).then(async (data) => {
     // Get the target element
     const target = await getElementById("offer-details");
     target.innerHTML = "";
