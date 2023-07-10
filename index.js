@@ -129,6 +129,8 @@ function loadOfferDetails({ offerId }) {
     target.innerHTML = "";
     // Add the offer
     target.innerHTML += OfferDetails(data);
+    // Remove the loading class
+    target.classList.remove("loading");
   });
 }
 
