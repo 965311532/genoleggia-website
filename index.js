@@ -19,7 +19,7 @@ function start() {
       loadOfferDetails();
       break;
     case "/offers":
-      loadOffers();
+      loadOffers({ page: 1, perPage: 12 });
       break;
     case "/locations":
       loadLocationsPage();
@@ -103,16 +103,16 @@ function CarOffer(props) {
       Anticipo €${formatNumber(props.deposit)} + IVA
     </div>
     <div class="car-offer-btn">
-      <a href="/offers?offerId=${props.id}" class="button red w-button">
+      <a href="/offer?offerId=${props.id}" class="button red w-button">
         Scopri di più
       </a>
     </div>
   </div>`;
 }
 
-function loadOffers() {
+function loadOffers({ page, perPage }) {
   // Fetch offers
-  getOffers({ perPage: 20 }).then(async (data) => {
+  getOffers({ page, perPage }).then(async (data) => {
     // Get the offers container element
     const target = await getElementById("offers");
     target.innerHTML = "";
@@ -120,6 +120,16 @@ function loadOffers() {
     for (let i = 0; i < data.items.length; i++) {
       target.innerHTML += CarOffer(data.items[i]);
     }
+    // Register the event listeners for the #offers-load-more button
+    const loadMoreButton = await getElementById("offers-load-more");
+    loadMoreButton.addEventListener("click", () => {
+      loadOffers({ page: page + 1, perPage });
+    });
+    // Update the subtitle
+    const subtitle = await getElementById("offers-subtitle");
+    subtitle.innerHTML = `Mostrando ${data.per_page * page} di ${
+      data.per_page * data.pages
+    } offerte`;
   });
 }
 
