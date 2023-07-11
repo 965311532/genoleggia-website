@@ -19,7 +19,7 @@ function start() {
       loadOfferDetails();
       break;
     case "/offers":
-      loadOffers({ page: 1, perPage: 12 });
+      loadOffers();
       break;
     case "/locations":
       loadLocationsPage();
@@ -112,30 +112,46 @@ function CarOffer(props) {
   </div>`;
 }
 
-function loadOffers({ page, perPage }) {
-  // Fetch offers
+function loadOffers() {
+  // Set a `page` variable to keep track of the current page
+  let page = 1;
+  const perPage = 12;
   getOffers({ page, perPage }).then(async (data) => {
     // Get the offers container element
     const target = await getElementById("offers");
-    // Remove the placeholder if it's the first page
-    if (page === 1) {
-      target.innerHTML = "";
-    }
-    // Add the offers
+    // Remove the placeholder
+    target.innerHTML = "";
+
+    // Add the offers to the target element
     for (let i = 0; i < data.items.length; i++) {
       target.innerHTML += CarOffer(data.items[i]);
     }
-    // Register the event listeners for the #offers-load-more button
-    const loadMoreButton = await getElementById("offers-load-more");
-    loadMoreButton.addEventListener("click", () => {
-      loadOffers({ page: page + 1, perPage });
-    });
-    // Update the subtitle
+
+    // Get the subtitle element
     const subtitle = await getElementById("offers-subtitle");
+    subtitle.classList.remove("hidden"); // Remove the hidden class
+    // Update the subtitle
     subtitle.innerHTML = `${data.per_page * page} di ${
       data.per_page * data.pages
     } offerte`;
-    subtitle.classList.remove("hidden");
+
+    // Register the event listeners for the #offers-load-more button
+    const loadMoreButton = await getElementById("offers-load-more");
+    loadMoreButton.addEventListener("click", () => {
+      // Increment the page
+      page++;
+      // Add the offers
+      getOffers({ page, perPage }).then(async (data) => {
+        // Add the offers to the target element
+        for (let i = 0; i < data.items.length; i++) {
+          target.innerHTML += CarOffer(data.items[i]);
+        }
+      });
+      // Update the subtitle
+      subtitle.innerHTML = `${data.per_page * page} di ${
+        data.per_page * data.pages
+      } offerte`;
+    });
   });
 }
 
