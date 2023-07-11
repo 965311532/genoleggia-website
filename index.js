@@ -57,10 +57,12 @@ async function getElementById(id) {
 }
 
 // Helper function to get the offers
-async function getOffers({ offerId, page = 1, perPage = 20 }) {
+async function getOffers({ offerId, page, perPage }) {
+  page = page || 1;
+  perPage = perPage || 12;
   // Return the offers from the API
   console.debug("Fetching offers...");
-  let params = `?page=${page}&per_page=${perPage}`;
+  let params = `?page=${page}&per_page=${perPage}&sort_by=price&order=asc`;
   params = offerId ? "/" + offerId : params;
   return fetch(`https://api.genoleggia.com/offers/public${params}`)
     .then((res) => res.json())
