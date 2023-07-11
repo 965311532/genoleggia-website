@@ -186,6 +186,11 @@ function OfferDetails(props) {
       ${props.duration} mesi · ${formatNumber(props.distance)} km/anno
       <br/>
       Anticipo €${formatNumber(props.deposit)} + IVA
+      ${
+        props.target === "all"
+          ? ""
+          : `<br/>Solo ${props.target === "company" ? "Aziende" : "Privati"}`
+      }
     </div>
     <h1 class="title red bold">${parseFloat(props.price).toFixed(0)},00€ 
       <span class="text-span">mese i.e.</span>
